@@ -2,13 +2,15 @@ import snscrape.modules.twitter as sntwitter
 import pandas as pd
 import re
 import nltk
-nltk.download('stopwords')
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from wordcloud import WordCloud,STOPWORDS,ImageColorGenerator
 from PIL import Image
 from io import BytesIO
 import base64
+
+nltk.download('stopwords')
+nltk.download('punkt')
 
 
  
