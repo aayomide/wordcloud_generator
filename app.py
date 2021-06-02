@@ -13,11 +13,8 @@ app.logger.setLevel(logging.ERROR)
 def index():
     if request.method == "POST":
         twitter_handle = request.form["handle"]
-        maximum_words = request.form["count"]
-    
-        maximum_words = int(maximum_words)
         
-        image_str = generate_wc(twitter_handle, maximum_words)
+        image_str = generate_wc(twitter_handle)
         
         return render_template('index.html', image=image_str)
     else:
