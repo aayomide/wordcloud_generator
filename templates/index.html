@@ -1,30 +1,30 @@
 {% extends "base.html" %}
 
 {% block head %}
-
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="col-md-8 mx-auto text-center bg-primary mt-3 p-4 rounded">
-      <form action="/" method="POST" id="w-form">
-        <div class="form-group">
-          <h5>News source to generate words from:</h5>
-          <input type="text" id="source" class="form-control" name="source" size="30" required="required" placeholder="e.g bbc-news, bloomberg, business-insider"><br>
-        </div>
+  <div class="container">
+      <div class="col-md-8 mx-auto text-center bg-primary mt-3 p-4 rounded">
+        <form action="/" method="POST" id="w-form">
           <div class="form-group">
-            <h5>enter maximum number of words:</h5>
-            <input type="number" id="count" class="form-control" name="count" min="50" max="200" value="200" required="required"><br>
+            <h5 style="color: white; text-align: left;">enter twitter handle:</h5>
+            <input class="form-control" type="text" id="handle" name="handle" size="30" required="required" placeholder="@username"><br>
           </div>
-          <button id="w-change-btn" type="submit" class="btn btn-dark form-control">Generate WordCloud</button><br><hr>
-      </form>
-      {% if request.method == 'POST' %}
-      <figure id="img-div">
-        <img src="data:image/jpeg;base64,{{ image }}">
-      </figure>
-      {% else %}
-      {% endif %}
-    </div>
-</div>
+            <div class="form-group">
+              <h5 style="color: white; text-align: left;">enter maximum number of words to show:</h5>
+              <input class="form-control" type="number" id="count" name="count" min="50" max="200" value="200" required="required"><br>
+            </div>
+            <button id="w-change-btn" type="submit" class="btn btn-dark">Generate WordCloud</button><hr>
+        </form>   <!-- form inputs -->
 
-{% endblock %}
+        {% if request.method == 'POST' %}
+            <figure id="img-div">
+                <img src="data:image/jpeg;base64,{{ image }}">
+            </figure>   <!-- show word cloud -->
+        {% else %}
+        {% endif %}
+      </div>
+  </div>
+
+  {% endblock %}
