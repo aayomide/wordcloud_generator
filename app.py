@@ -4,6 +4,9 @@ from tweetscloud import generate_wc
 
 app = Flask(__name__)
 
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == "POST":
