@@ -12,9 +12,9 @@ from io import BytesIO
 import base64
 
  
-def generate_wc(username, maxWords):
+def generate_wc(username):
     stopwords = set(STOPWORDS)
-    wc = WordCloud(max_words = maxWords, 
+    wc = WordCloud(max_words = 300, 
     width = 600,
     height = 400,
     min_font_size = 4,
