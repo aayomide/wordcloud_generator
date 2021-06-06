@@ -12,7 +12,7 @@ app.logger.setLevel(logging.ERROR)
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == "POST":
-        twitter_handle = request.form["handle"]
+        twitter_handle = request.form["twitter_handle"]
         
         image_str = generate_wc(twitter_handle)
         
