@@ -4,23 +4,27 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container">
-      <div class="col-md-8 mx-auto text-center bg-primary mt-3 p-4 rounded">
-        <form action="/" method="POST" id="w-form">
-          <div class="form-group">
-            <h5 style="color: white; text-align: left;">enter twitter handle:</h5>
-            <input class="form-control" type="text" id="handle" name="handle" size="30" required="required" placeholder="@username"><br>
-          </div>
-            <button id="w-change-btn" type="submit" class="btn btn-dark">Generate WordCloud</button><hr>
-        </form>   <!-- form inputs -->
-
-        {% if request.method == 'POST' %}
-            <figure id="img-div">
-                <img src="data:image/jpeg;base64,{{ image }}">
-            </figure>   <!-- show word cloud -->
-        {% else %}
-        {% endif %}
-      </div>
+<div class="container-fluid">
+  <div class="row align-items-center main-content">
+    <div class="col bg-dark p-4">
+      <a href="{{ url_for('index') }}" class="navbar-brand"><h1 style="font-size:3vw; color: white; margin: 0 auto; padding: 0 12px;">Twitter Word Cloud Generator</h1></a>
+      <form class="form-inline" action="/" method="POST">
+        <div class="form-group col">
+          <!-- <label class="control-label" id="twitter_handle-label" for="twitter_handle">Twitter Handle:</label> -->
+          <!-- <input class="form-control mr-2" id="twitter_handle" name="twitter_handle" type="text" value="@coldstoneng" placeholder="@coldstoneng" style="width: 79%;"/> -->
+          <input id="#navBarSearchForm" class="form-control mr-sm-2" name="twitter_handle" type="text" required="required" placeholder="@username"style="width: 85%;">
+          <button id="w-change-btn" type="submit" class="btn btn-dark my-2 rounded-0">Generate WordCloud</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-  {% endblock %}
+  <div>
+    {% if request.method == 'POST' %}
+    <figure id="img-div">
+      <img class="figure-img img-fluid" src="data:image/jpeg;base64,{{ image }}">
+    </figure>   <!-- show word cloud -->
+    {% else %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
