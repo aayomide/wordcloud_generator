@@ -15,10 +15,10 @@ import base64
 def generate_wc(username):
     stopwords = set(STOPWORDS)
     wc = WordCloud(max_words = 300, 
-    width = 600,
-    height = 400,
+    width = 1600,
+    height = 590,
     min_font_size = 4,
-    max_font_size = 150,
+    max_font_size = 300,
     colormap='Dark2_r', background_color='white').generate(get_tweets(username))
 
     image = wc.to_image()
