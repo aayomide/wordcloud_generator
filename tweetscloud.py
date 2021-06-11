@@ -51,7 +51,7 @@ def get_tweets(username):
 
         return ' '.join([word.lower().strip() for word in nltk.word_tokenize(message) if not word in stop_word and len(word)>2])    # remove stop words    
 
-    tweets_df['tweet'] = tweets_df.content.apply(lambda w: clean_tweets(w))
+    tweets_df['tweet'] = tweets_df.tweet.apply(lambda w: clean_tweets(w))
 
     tweets_corpus = ' '.join(tweet for tweet in tweets_df['tweet'])
 
