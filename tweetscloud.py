@@ -30,10 +30,19 @@ def generate_wc(username):
 
 
 def get_tweets(username):
-    search_input = 'from:{}'.format(username)
-    scraped_tweets = sntwitter.TwitterSearchScraper(search_input).get_items()
+    maxTweets = 1000  
+    search_input = 'from:{}'.format(username)   
+        
+    # Creating list to append tweet data to
+    tweets_list = []
+    
+    # Using TwitterSearchScraper to scrape data and append tweets to list
+    for i, tweet in enumerate(sntwitter.TwitterSearchScraper(search_input).get_items()):
+       if i > maxTweets:
+         break
+       tweets_list.append([tweet.content])
 
-    tweets_df = pd.DataFrame(scraped_tweets)[['date', 'content']]
+    tweets_df = pd.DataFrame(tweets_list, columns=['tweet'])
 
 
     def clean_tweets(message):
@@ -42,8 +51,8 @@ def get_tweets(username):
 
         return ' '.join([word.lower().strip() for word in nltk.word_tokenize(message) if not word in stop_word and len(word)>2])    # remove stop words    
 
-    tweets_df['content'] = tweets_df.content.apply(lambda w: clean_tweets(w))
+    tweets_df['tweet'] = tweets_df.content.apply(lambda w: clean_tweets(w))
 
-    tweets_corpus = ' '.join(tweet for tweet in tweets_df['content'])
+    tweets_corpus = ' '.join(tweet for tweet in tweets_df['tweet'])
 
     return tweets_corpus
