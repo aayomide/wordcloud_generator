@@ -30,7 +30,7 @@ def generate_wc(username):
 
 
 def get_tweets(username):
-    maxTweets = 1000  
+    maxTweets = 5000  
     search_input = 'from:{}'.format(username)   
         
     # Creating list to append tweet data to
