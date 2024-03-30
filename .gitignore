@@ -4,7 +4,10 @@ flaskenv/
 __pycache__/
 
 .vscode
+.vscode/*      
+.vscode/**/*
 
 .ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
 config.py
